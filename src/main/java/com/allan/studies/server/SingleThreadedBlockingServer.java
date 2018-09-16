@@ -12,9 +12,10 @@ public class SingleThreadedBlockingServer {
 
     public static void main(String[] args) throws IOException {
         ServerSocket ss = new ServerSocket(8080);
-        Handler<Socket> handler = new PrintingHandler<>(
-                new TransmogrifyHandler()
-        );
+        Handler<Socket> handler =
+                new PrintingHandler<>(
+                    new TransmogrifyHandler()
+                );
         while(true) {
             Socket s = ss.accept();
             handler.handle(s);

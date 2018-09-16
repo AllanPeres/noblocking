@@ -5,10 +5,14 @@ import java.net.Socket;
 
 public class NastyChump {
 
-    public static void main(String[] args) throws IOException, InterruptedException {
-        Socket[] sockets = new Socket[300000];
+    public static void main(String[] args) throws InterruptedException {
+        Socket[] sockets = new Socket[300_000_000];
         for (int i = 0; i < sockets.length; i++) {
-            sockets[i] = new Socket("localhost", 8080);
+            try {
+                sockets[i] = new Socket("localhost", 8080);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         Thread.sleep(100_000);
     }
